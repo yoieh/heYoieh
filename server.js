@@ -1,12 +1,31 @@
-
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const Commando = require('discord.js-commando');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-response.send("Hello from Firebase!");
+//const sqlite = require('sqlite');
+const path = require('path');
 
+//const client = new Discord.Client();
+const client = new Commando.Client({
+    owner: '343576719644426250'
+});
+
+client.setProvider('!');
+
+client.registry
+    // Registers your custom command groups
+    .registerGroups([
+        ['fun', 'Fun commands'],
+        ['some', 'Some group'],
+        ['other', 'Some other group']
+    ])
+
+    // Registers all built-in groups, commands, and argument types
+    .registerDefaults()
+
+    // Registers all of your commands in the ./commands/ directory
+    .registerCommandsIn(path.join(__dirname, 'commands'));
+    
+/*
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -19,6 +38,7 @@ client.on('message', msg => {
         msg.reply('Pong!');
     }
 });
+*/
 
 client.login(process.env.TOKEN);
 
