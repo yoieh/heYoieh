@@ -9,7 +9,7 @@ const client = new Commando.Client({
     owner: '343576719644426250'
 });
 
-client.setProvider('!');
+client.setProvider('>');
 
 client.registry
     // Registers your custom command groups
@@ -24,7 +24,7 @@ client.registry
 
     // Registers all of your commands in the ./commands/ directory
     .registerCommandsIn(path.join(__dirname, 'commands'));
-    
+
 /*
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
