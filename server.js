@@ -1,44 +1,26 @@
-const Discord = require("discord.js");
-const Commando = require('discord.js-commando');
 
-//const sqlite = require('sqlite');
+const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 
-//const client = new Discord.Client();
-const client = new Commando.Client({
-    owner: '343576719644426250'
+const client = new CommandoClient({
+    commandPrefix: '>',
+    unknownCommandResponse: false,
+    owner: '303212873314992128',
+    disableEveryone: true
 });
-
-client.setProvider('>');
 
 client.registry
-    // Registers your custom command groups
+    .registerDefaultTypes()
     .registerGroups([
-        ['fun', 'Fun commands'],
-        ['some', 'Some group'],
-        ['other', 'Some other group']
+        ['fun', 'Just For fun!']
     ])
+    .registerDefaultGroups()
+    .registerDefaultCommands()
+    .registerCommandsIn(path.join(__dirname, '/commands'));
 
-    // Registers all built-in groups, commands, and argument types
-    .registerDefaults()
-
-    // Registers all of your commands in the ./commands/ directory
-    .registerCommandsIn(path.join(__dirname, 'commands'));
-
-/*
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    console.log('Logged in!');
+    client.user.setGame('Game');
 });
 
-client.on('message', msg => {
-        
-    console.log(msg);
-
-    if (msg.content === 'ping') {
-        msg.reply('Pong!');
-    }
-});
-*/
-
-client.login(process.env.TOKEN);
-
+client.login('MzQzNTc2NzE5NjQ0NDI2MjUw.DGiy3Q.BLYpGI4e28MPDuAt-8qsU29uEYM');
