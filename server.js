@@ -1,4 +1,5 @@
 
+require('dotenv').config()
 const { CommandoClient } = require('discord.js-commando');
 const path = require('path');
 
@@ -23,4 +24,4 @@ client.on('ready', () => {
     client.user.setGame('Game');
 });
 
-client.login('MzQzNTc2NzE5NjQ0NDI2MjUw.DGiy3Q.BLYpGI4e28MPDuAt-8qsU29uEYM');
+client.login(process.env.TOKEN);
