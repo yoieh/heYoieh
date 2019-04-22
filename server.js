@@ -7,7 +7,8 @@ const client = new CommandoClient({
     commandPrefix: process.env.PREFIX,
     unknownCommandResponse: false,
     owner: process.env.OWNER,
-    disableEveryone: true
+    disableEveryone: true,
+    clientPermissions: ['MANAGE_MESSAGES']
 });
 
 client.registry
@@ -21,7 +22,6 @@ client.registry
 
 client.on('ready', () => {
     console.log('Logged in!');
-    client.user.setGame('Game');
 });
 
 client.login(process.env.TOKEN);
